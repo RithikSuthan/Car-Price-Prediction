@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    <title>
+        CAR PRICE PREDICTION
+    </title>
+ 
+    <style>
+ 
+        /* Styling the Body element i.e. Color,
+        Font, Alignment */
+        body {
+            background-color: #bb9b9b;
+            font-family: Verdana;
+            text-align: center;
+        }
+ 
+        /* Styling the Form (Color, Padding, Shadow) */
+        form {
+            background-color: rgb(158, 210, 206);
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px 20px;
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+ 
+        /* Styling form-control Class */
+        .form-control {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+ 
+        /* Styling form-control Label */
+        .form-control label {
+            display: block;
+            margin-bottom: 10px;
+        }
+ 
+        /* Styling form-control input,
+        select, textarea */
+        .form-control input,
+        .form-control select,
+        .form-control textarea {
+            border: 1px solid #777;
+            border-radius: 2px;
+            font-family: inherit;
+            padding: 10px;
+            display: block;
+            width: 95%;
+        }
+ 
+        /* Styling form-control Radio
+        button and Checkbox */
+        .form-control input[type="radio"],
+        .form-control input[type="checkbox"] {
+            display: inline-block;
+            width: auto;
+        }
+ 
+        /* Styling Button */
+        button {
+            background-color: #fff8f8;
+            border: 1px solid #777;
+            border-radius: 2px;
+            font-family: inherit;
+            font-size: 21px;
+            display: block;
+            width: 100%;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+  
+<body>
+    <h1>CAR PRICE PREDICTION</h1>
+  
+    <!-- Create Form -->
+    <form action="{{ url_for('predict')}}" method="post">
+ 
+        <!-- Details -->
+        <div class="form-control">
+            <label for="year" id="first">
+                YEAR
+            </label>
+ 
+            <!-- Input Type Text -->
+            <input type="number"
+                   id="first"
+                   name="Year"
+                   required="required"
+                   placeholder="Enter the year" />
+        </div>
+
+        <div class="form-control">
+            <label for="price" id="second">
+                SHOWROOM PRICE (IN LAKHS)
+            </label>
+ 
+            <!-- Input Type Email-->
+            <input type="number"
+                   id="second"
+                   name="Present_Price"
+                   required="required"
+                   placeholder="Enter the showroom price" />
+        </div>
+  
+        <div class="form-control">
+            <label for="age" id="third">
+                KILOMETERS DRIVED
+            </label>
+ 
+            <!-- Input Type Text -->
+            <input type="number"
+                   id="third"
+                   name="Kms_Driven"
+                   required="required"
+                   placeholder="Enter the kms drived" />
+        </div>
+
+        <div class="form-control">
+            <label for="age" id="fourth">
+                HOW MANY OWNERS HANDLED THE CAR PRIOR (0/1/2/3)
+            </label>
+ 
+            <!-- Input Type Text -->
+            <input type="number"
+                   id="fourth"
+                   name="Owner"
+                   required="required"
+                   placeholder="Enter the number of years the car handled" />
+        </div>
+  
+        <div class="form-control">
+            <label for="role" id="fuel">
+                FUEL TYPE THE CAR PREFER
+            </label>
+            <!-- Dropdown options -->
+            <select name="Fuel_Type_Petrol" id="fuel" required="required">
+                <option value="null"> </option>
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="CNG">
+                    CNG
+                </option>
+            </select>
+        </div>
+
+        <div class="form-control">
+            <label for="role" id="resea">
+                ARE YOU A DEALER OR INDIVIDUAL
+            </label>
+            <!-- Dropdown options -->
+            <select name="Seller_Type_Individual" id="resea"required="required">
+                <option value="null"> </option>
+                <option value="Dealer">Dealer</option>
+                <option value="Individual">Individual</option>
+            </select>
+        </div>
+
+        <div class="form-control">
+            <label for="role" id="research">
+                TRANSMISSION TYPE
+            </label>
+            <!-- Dropdown options -->
+            <select name="Transmission_Mannual" id="research" required="required">
+                <option value="null"> </option>
+                <option value="Mannual">Manual Car</option>
+                <option value="Automatic">Automatic Car</option>
+            </select>
+        </div>
+  
+        <!-- Multi-line Text Input Control -->
+        <button id="sub" type="submit" value="submit">
+            Calculate the Selling Price
+        </button>
+    </form>
+    <br><br><h3>{{ prediction_text }}<h3>
+</body>
+  
+</html>
+
